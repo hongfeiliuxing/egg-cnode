@@ -7,7 +7,7 @@ module.exports = app => {
   const { router, controller, config, middleware } = app;
 
   const { site, sign, user, topic, rss,
-    search, page, reply, message, github } = controller;
+    search, page, reply, message } = controller;
 
   const userRequired = middleware.userRequired();
   const adminRequired = middleware.adminRequired();
@@ -44,8 +44,6 @@ module.exports = app => {
 
   // github oauth
   app.passport.mount('github');
-  router.get('/auth/github/new', github.new);
-  router.post('/auth/github/create', createUserLimit, github.create);
 
   router.get('/search_pass', sign.showSearchPass); // 找回密码页面
   router.post('/search_pass', sign.updateSearchPass); // 更新密码

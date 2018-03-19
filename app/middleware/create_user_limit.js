@@ -4,7 +4,7 @@ const moment = require('moment');
 
 module.exports = limitCount => {
 
-  return async function(ctx, next) {
+  return async function createUserLimit(ctx, next) {
     const { service } = ctx;
     const realIP = ctx.headers['x-real-ip'];
     if (!realIP) {
